@@ -7,7 +7,8 @@
         body { font-family: Arial; background: #111; color: white; padding: 20px; }
         .card { background: #222; padding: 20px; border-radius: 8px; margin: 10px 0; }
         button { background: #e63946; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #d62828; }
+        p { margin: 15px 0; }
+        span { color: #2a9d8f; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -22,14 +23,15 @@
     </div>
 
     <script>
-        // Page load avagane data test cheddam
+        // Page load avagane test data chupista
         document.getElementById('email').innerText = 'admin@codeiq.com';
         document.getElementById('credits').innerText = '999999';
         document.getElementById('ref').innerText = 'https://codeiq.com/ref/admin123';
         
+        // Logout button function
         function logout() {
-            alert('Logout clicked! Login page ki veltundi');
-            window.location.href = '/'; // leka nee login page url
+            alert('Logout Success! Login page ki velthundi');
+            window.location.href = '/login.html'; // leka '/'
         }
     </script>
 </body>
