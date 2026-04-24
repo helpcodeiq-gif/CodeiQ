@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeIQ Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <title>CodeIQ Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; background: #111; color: white; padding: 20px; }
+        .card { background: #222; padding: 20px; border-radius: 8px; margin: 10px 0; }
+        button { background: #e63946; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #d62828; }
+    </style>
 </head>
-<body class="bg-gray-100">
-  <div class="bg-[#1a1a2e] text-white p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">CodeIQ Co-Pilot</h1>
-    <button onclick="logout()" class="bg-red-600 px-3 py-1 rounded text-sm">Logout</button>
-  </div>
-  <div class="p-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6">Welcome to CodeIQ</h2>
-    <div class="bg-white p-6 rounded-lg shadow">
-      <p>Email: <span id="user-email"></span></p>
-      <p>Credits: <span id="user-credits"></span></p>
-      <p>Referral Link: <span id="ref-link"></span></p>
+<body>
+    <h1>CodeIQ Co-Pilot</h1>
+    <button onclick="logout()">Logout</button>
+    
+    <div class="card">
+        <h2>Welcome to CodeIQ</h2>
+        <p><b>Email:</b> <span id="email">Loading...</span></p>
+        <p><b>Credits:</b> <span id="credits">Loading...</span></p>
+        <p><b>Referral Link:</b> <span id="ref">Loading...</span></p>
     </div>
-  </div>
-<script>
-const token = localStorage.getItem('token');
-if (!token) window.location.href = '/index.html';
-async function loadProfile() {
-  const res = await fetch('/api/my-profile', {headers: { 'Authorization': 'Bearer ' + token }});
-  const data = await res.json();
-  document.getElementById('user-email').innerText = data.email;
-  document.getElementById('user-credits').innerText = data.credits;
-  document.getElementById('ref-link').innerText = data.referral_link;
-}
-function logout() { localStorage.removeItem('token'); window.location.href = '/index.html'; }
-loadProfile();
-</script>
+
+    <script>
+        // Page load avagane data test cheddam
+        document.getElementById('email').innerText = 'admin@codeiq.com';
+        document.getElementById('credits').innerText = '999999';
+        document.getElementById('ref').innerText = 'https://codeiq.com/ref/admin123';
+        
+        function logout() {
+            alert('Logout clicked! Login page ki veltundi');
+            window.location.href = '/'; // leka nee login page url
+        }
+    </script>
 </body>
 </html>
