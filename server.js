@@ -41,7 +41,8 @@ app.use('/api/', async (req, res, next) => {
     if (user.rows[0]?.banned) return res.status(403).json({ error: 'Account banned' });
     if (user.rows[0]?.suspended) return res.status(429).json({ error: 'Account suspended' });
   }
-  next();
+  // Serve frontend folder
+app.use(express.static('frontend'));
 });
 
 async function verifyCaptcha(token) {
@@ -128,3 +129,12 @@ app.post('/api/admin/ban-user', verifyToken, async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`CodeIQ Server Running on ${PORT}`));
+127  });  // nee last API route end
+128
+129  app.get('*', (req, res) => {  // ✅ LINE 129 NUNDI START CHEY
+130    res.sendFile(__dirname + '/frontend/index.html');
+131  });
+132
+133  app.listen(port, () => {
+134    console.log(`Server running on port ${port}`);
+135  });
