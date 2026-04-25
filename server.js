@@ -3,19 +3,12 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'frontend')));
+// Root folder nunchi files serve chey
+app.use(express.static(__dirname));
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK' });
-});
-
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'admin.html'));
-});
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+// Main page - root lo unna index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
